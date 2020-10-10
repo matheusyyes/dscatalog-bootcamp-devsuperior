@@ -7,7 +7,7 @@ import './styles.scss';
 
 const Home = () => (
     <div className="home-container">
-        <div className="row home-content">
+        <div className="row home-content card-base border-radios-20">
             <div className="col-lg-6 home-text col-sm-12">
             <h1 className="text-title">Conheça o melhor<br/>
              catálogo de produtos</h1>
@@ -19,7 +19,7 @@ const Home = () => (
              </Link>
             </div>
             <div className="col-lg-6 col-sm-12">
-               <MainImage className="main-image img-fluid"/>
+               <MainImage className="main-image "/>
             </div>
         </div>
     </div>
