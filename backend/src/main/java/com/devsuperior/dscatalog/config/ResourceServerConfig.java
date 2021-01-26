@@ -82,7 +82,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 			= new FilterRegistrationBean<>(new CorsFilter(corsConfigurationSource()));
 		bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
 		return bean;
-	}	
+	}		
 
 	
 	
