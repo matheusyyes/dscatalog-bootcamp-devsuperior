@@ -1,29 +1,36 @@
 import ButtonIcon from 'core/components/ButtonIcon';
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import AuthCard from '../Card';
 import './styles.scss';
 import { makeLogin } from 'core/utils/request';
 import { saveSessionData } from 'core/utils/auth';
 
+
 type FormData = {
     username: string;
     password: string;
+}
+
+type LocationState = {
+    from:string;
 }
 
 const Login = () => {
     const { register, handleSubmit, errors } = useForm<FormData>();
     const [hasError, setHasErro] = useState(false);
     const history = useHistory();
+    const location = useLocation<LocationState>();
 
+    const { from } = location.state || { from: { pathname: "/admin" } };
 
     const onSubmit = (data: FormData) => {
         makeLogin(data)
             .then(response => {
                 setHasErro(false);
                 saveSessionData(response.data);
-                history.push('/admin')
+                history.replace(from)
             })
             .catch(() => {
                 setHasErro(true);
